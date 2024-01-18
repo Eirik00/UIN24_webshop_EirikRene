@@ -1,9 +1,10 @@
 const mainPage = document.getElementsByTagName("main")[0];
+const cartDocument = document.getElementById("cartList");
 /*for(let i=0;i<products.length;i++){
     let prod = products[i];
     let newElement = document.createElement("article");
     newElement.id = prod.prodid;
-    
+
     let image = document.createElement("img");
     image.src = "website_images/PROD_"+prod.imagefile;
     image.alt = prod.title;
@@ -36,6 +37,29 @@ products.map(product => productsHTML += `
     <a href="#">${product.category}</a>
     <h3>${product.title}</h3> <!-- H taggen gir prioritet i seo optimalisering -->
     <span>Kr. ${product.price}</span>
-    <button>Legg i handlekurv</button>
+    <button onclick="addToCart(${product.prodid})">Legg i handlekurv</button>
 </article>`);
 mainPage.innerHTML = productsHTML;
+
+//Handlevogn funksjonalitet
+function addToCart(proId){
+    cart.push({product: proId, quantity: 1});
+    updateCartDisplay();
+}
+
+function updateCartDisplay(){
+    let cartHTML = "";
+    cart.map(prod => {
+        let filterProduct = products.filter(filterprod => prod.product === filterprod.prodid)[0];
+        console.log(filterProduct);
+        cartHTML += `<li>
+        <span class="title">${filterProduct.title}</span>
+        <span class="price">${filterProduct.price}</span>
+        <span class="quantity">x${prod.quantity}</span>
+        <span class="functions">
+            <button>X</button>
+        </span>
+        </li>
+    `});
+    cartDocument.innerHTML = cartHTML;
+}
