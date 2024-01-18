@@ -72,8 +72,9 @@ header button span {
 }
 
 #carticon {max-width: 3rem; }
-
 #cart {
+    opacity: 0;
+    transition: ease-in-out .5s;
     background-color: var(--black);
     color: var(--white);
     width: 90%;
@@ -82,8 +83,15 @@ header button span {
     border-bottom: 0.5rem solid var(--green);
     position: absolute;
     top: 4.8rem;
-    right: 0;
+    right: -500px;
     padding: 1rem;
+
+    overflow: hidden;
+}
+
+#cart.show {
+    opacity: 1;
+    right: 0;
 }
 
 #cart h2 {

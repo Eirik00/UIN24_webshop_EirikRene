@@ -1,5 +1,8 @@
 const mainPage = document.getElementsByTagName("main")[0];
 const cartDocument = document.getElementById("cartList");
+const cartNumb = document.getElementById("cartNumber");
+const cartBtn = document.getElementById("cartBtn");
+const cartDoc = document.getElementById("cart");
 /*for(let i=0;i<products.length;i++){
     let prod = products[i];
     let newElement = document.createElement("article");
@@ -43,23 +46,51 @@ mainPage.innerHTML = productsHTML;
 
 //Handlevogn funksjonalitet
 function addToCart(proId){
-    cart.push({product: proId, quantity: 1});
+    let exist = cart.findIndex(p => proId === p.product);
+    console.log(exist);
+
+    if(exist === -1){
+        cart.push({product: proId, quantity: 1});
+    }else{
+        cart[exist].quantity++;
+    }
+    updateCartDisplay();
+}
+
+function removeFromCart(index){
+
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    }else{
+        cart.splice(index, 1);
+    }
     updateCartDisplay();
 }
 
 function updateCartDisplay(){
     let cartHTML = "";
-    cart.map(prod => {
+    let cartNumber = 0;
+    if(cart.length === 0){
+        cartHTML += "<li>Du har ingen varer i handlekurven</li>";
+    }
+
+    cart.map((prod, index) => {
         let filterProduct = products.filter(filterprod => prod.product === filterprod.prodid)[0];
-        console.log(filterProduct);
         cartHTML += `<li>
         <span class="title">${filterProduct.title}</span>
         <span class="price">${filterProduct.price}</span>
         <span class="quantity">x${prod.quantity}</span>
         <span class="functions">
-            <button>X</button>
+            <button onclick="removeFromCart(${index})">X</button>
         </span>
         </li>
     `});
     cartDocument.innerHTML = cartHTML;
+    cart.map(p => cartNumber += p.quantity);
+    cartNumb.innerHTML = cartNumber;
 }
+updateCartDisplay();
+
+cartBtn.addEventListener("click", ()=>{
+    cartDoc.classList.toggle("show");
+});
