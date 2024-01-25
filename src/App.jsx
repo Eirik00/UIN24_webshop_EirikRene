@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { products } from './assets/legodudes'
+import Title from './components/Title'
+import ProductCard from './components/ProductCard'
 
 function App() {
 
-  return (
-    <div id="container">
+  function Header(){
+    return(
       <header>
         <img id="logo" src="website_images/LD_logo.svg" alt="LEGOdudes nettbutikk" />
         <button id="cartBtn">
@@ -19,6 +20,16 @@ function App() {
           </ul>
         </section>
       </header>
+    )
+  }
+
+  
+
+  return (
+    <div id="container">
+      <Header>
+        
+      </Header>
       <nav>
         <ul>
           <li><a href="#">City</a></li>
@@ -29,6 +40,8 @@ function App() {
         </ul>
       </nav>
       <main>
+        <Title/>
+        {products.map(product => <ProductCard key={product.prodid} p={product}/>)}
       </main>
     </div>
   )
