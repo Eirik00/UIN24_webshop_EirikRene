@@ -1,11 +1,15 @@
-export default function ProductCard({p}) {
+export default function ProductCard({category, img, title, price, amount, setAmount}){
+  const handleClick = ()=>{
+    setAmount(prev => prev + 1)
+  }
+
     return(
       <article>
-        <img src={"website_images/PROD_"+p.imagefile} alt={p.title}/>
-        <a href="#">{p.category}</a>
-        <h3>{p.title}</h3>
-        <span>Kr. {p.price}</span>
-        <button onClick={() => console.log("Du har lagt vare til handlekurv")}>Legg i handlekurv</button>
+        <img src={"website_images/PROD_"+img} alt={title} />
+        <a href="#">{category}</a>
+        <h3>{title}</h3>
+        <span>Kr.{price}</span>
+        <button onClick={handleClick}>Legg i handlekurv</button>
       </article>
-    );
+    )
   }

@@ -43,38 +43,33 @@ header {
     padding: 2rem 1rem;
     position: relative;
 }
-
 #logo { max-width: 15rem; }
-
 header button {
-    position: relative;
     min-width: 3rem;
     padding: 0;
-    background-color: transparent;
+    background: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
 }
-
 header button span {
-    display: block;
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 1.5rem;
     height: 1.5rem;
     text-align: center;
     background-color: var(--red);
     color: var(--white);
     border-radius: 50%;
-    padding: .3rem;
+    display: block;
+    padding: 0.3rem;
     box-sizing: border-box;
     position: absolute;
-    top: -.25rem;
-    left: -1rem;
+    top: -0.4rem;
+    left: -0.9rem;
 }
-
 #carticon {max-width: 3rem; }
+
 #cart {
-    opacity: 0;
-    transition: ease-in-out .5s;
     background-color: var(--black);
     color: var(--white);
     width: 90%;
@@ -82,34 +77,30 @@ header button span {
     border-left: 0.5rem solid var(--green);
     border-bottom: 0.5rem solid var(--green);
     position: absolute;
-    top: 4.8rem;
+    top: 76px;
     right: -500px;
     padding: 1rem;
-
-    overflow: hidden;
+    opacity: 0;
+    transition: ease-in-out .5s;
 }
-
 #cart.show {
     opacity: 1;
     right: 0;
 }
-
 #cart h2 {
-    font-size: 1.5rem;   
+    font-size: 1.2rem;
 }
 
-/* Handlevogn Produktliste */
+/* Handlevogn produktliste */
 #cart ul {
     padding: 0;
     list-style-type: none;
     width: 100%;
 }
-
 #cart ul li {
     padding: 0.25rem;
     border-bottom: 1px solid var(--green);
 }
-
 #cart ul li button {
     background-color: var(--red);
     color: var(--white);
@@ -125,24 +116,20 @@ header button span {
     box-sizing: border-box;
 }
 .title {
-    width: calc(90% - 8.6rem);
+    width: calc(100% - 10rem);
 }
 .price {
-    width: 4.5rem;
+    width: 4rem;
     text-align: right;
 }
 .quantity {
-    width: 2.6rem;
+    width: 2.5rem;
     text-align: right;
 }
 .functions {
     width: 2.5rem;
     text-align: right;
 }
-
-
-
-/* Navigasjonsbar */
 
 nav {
     background-color: var(--red);
@@ -160,51 +147,46 @@ nav a {
     color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
+    box-sizing: border-box;
     border-bottom: 4px solid var(--red);
 }
-nav a:hover {
+nav a:hover, .active {
     background-color: var(--yellow);
     color: var(--black);
     border-bottom: 4px solid var(--black);
 }
 
-/* Kategoriside */
+/* KATEGORISIDE */
 main {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
     justify-content: space-around;
+    gap: 2rem;
     padding: 1rem;
 }
-
 main h2 {
     width: 100%;
     text-align: center;
-    clear: both; /* tvinger elementer rundt den til å falle ned */
     text-transform: uppercase;
     margin: 0;
 }
-
 main article {
     max-width: 31%;
     flex-grow: 1;
     box-sizing: border-box;
     padding: 1rem;
-    background: var(--black);
+    background-color: var(--black);
     color: var(--white);
     border-bottom: 1rem solid var(--green);
 }
-
 main article img {
     max-width: 100%;
     height: auto;
 }
-
 main article h3 {
-    margin: 0.20rem 0;
+    margin: 0.25rem 0;
     text-transform: uppercase;
 }
-
 main article a {
     color: var(--yellow);
     text-decoration: none;
@@ -215,13 +197,12 @@ main article span {
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
-
 main article button {
     background-color: var(--green);
     border: none;
     font-family: var(--font);
-    font-size: 1rem;
     color: var(--white);
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 1rem;
     cursor: pointer;
+    font-size: 1rem;
 }
