@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import './App.css'
-import Header from './components/Header'
+import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import ContentPage from './components/ContentPage'
-import Nav from './components/Nav'
+import Layout from './components/Layout'
+import Home from './components/Home'
 
 function App() {
   const [amount, setAmount] = useState(0)
@@ -10,11 +11,13 @@ function App() {
   const [cart, setCart] = useState([])
 
   return (
-    <div id="container">
-        <Header amount={amount} cart={cart} setCart={setCart}/>
-        <Nav category={category} />
-        <ContentPage setAmount={setAmount} category={category} setCart={setCart} cart={cart}/>
-    </div>
+      
+    <Layout amount={amount} cart={cart} setCart={setCart} category={category}>
+      <Routes>
+          <Route path="/home" element={<Home />} />
+      </Routes>
+      <ContentPage setAmount={setAmount} category={category} setCart={setCart} cart={cart}/>
+    </Layout>
   )
 
 }
